@@ -1,16 +1,18 @@
 package main
 
 import (
-	"github.com/meowailand/MeowCoin/blockchain"
+	"html/template"
+	"log"
+	"net/http"
 )
 
-func main() {
-	chain := blockchain.GetBlockChain()
-	chain.AddBlock("Second Block")
-	chain.AddBlock("Third Block")
-	chain.AddBlock("Fourth Block")
+const port string = ":4000"
 
-	for _, block := range chain.AllBlocks() {
-		block.PrintBlock()
-	}
+func home(rw http.ResponseWriter, r *http.Request) {
+	tmpl, err := template.ParseFiles("templates/home.html")
+
+}
+
+func main() {
+	log.Fatal(http.ListenAndServe(port, nil))
 }
